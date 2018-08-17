@@ -2,16 +2,17 @@ import { NgModule } from "@angular/core";
 
 import { CommonModule } from "@angular/common";
 import { ResultComponent } from "./result/result.component";
-import { ResultService } from "./resultService";
-
-
+import { SharedService } from './sharedService';
+import { DetailComponent } from "./details/detail.component";
 
 @NgModule({
-    declarations: [ResultComponent],
+    declarations: [ResultComponent, DetailComponent],
     imports: [CommonModule],
-    exports: [ResultComponent],
-    providers: [ResultService]
+    exports: [ResultComponent,DetailComponent],
+    providers: [SharedService]
 })
 export class SharedModule { }
-export * from './resultService';
+export * from './sharedService';
 export * from './resultModel';
+export {ResultComponent} ;
+export {DetailComponent};
