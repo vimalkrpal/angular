@@ -2,14 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpEvent, HttpErrorResponse, HttpResponse, HttpRequest } from '@angular/common/http';
 import { HttpHandler } from "@angular/common/http/src/backend";
 import { Observable } from "rxjs/Observable";
-import { AuthTokenService, AlertsService } from "app/core";
 import 'rxjs/add/operator/do';
-import { Constant } from '../shared/Constant';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
     public requestCount: number = 0;
     modalOpen: Boolean = false;
-    constructor(private authToken: AuthTokenService, private alerts: AlertsService) {
+    constructor() {
         var load = '<button id="startLoading" class="noDisplay" data-toggle="modal" data-target="#loadingScreen"></button>';
         load += '<div class="modal fade center" data-backdrop="static" data-keyboard="false" id="loadingScreen" role="dialog">';
         load += '<i class="fa fa-5x fa-spin fa-spinner" aria-hidden="true"></i>';
@@ -51,7 +49,7 @@ export class Interceptor implements HttpInterceptor {
             this.update();
             if (error instanceof HttpErrorResponse) {
                 console.error('Processing http error', error);
-                this.alerts.error(error.message);
+                
             }
             return Observable.throw(error);
         })
