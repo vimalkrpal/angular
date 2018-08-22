@@ -11,7 +11,7 @@ export class Interceptor implements HttpInterceptor {
         var load = '<button id="startLoading" class="noDisplay" data-toggle="modal" data-target="#loadingScreen"></button>';
         load += '<div class="modal fade center" data-backdrop="static" data-keyboard="false" id="loadingScreen" role="dialog">';
         load += '<i class="fa fa-5x fa-spin fa-spinner" aria-hidden="true"></i>';
-        load += '<button id="closeLoading" class="noDisplay" data-dismiss="modal"></button>';
+        load += '<button id="closeLoading" [hidden]=true data-dismiss="modal"></button>';
         load += '</div>';
         document.getElementById("loading").innerHTML = load;
     }
